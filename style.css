@@ -1,0 +1,540 @@
+:root {
+    --primary-color: #1890ff;
+    --sidebar-bg: #001529;
+    --sidebar-text: #ffffff;
+    --sidebar-hover: #1890ff;
+    --header-bg: #ffffff;
+    --bg-color: #f0f2f5;
+    --text-color: #333;
+    --border-color: #e8e8e8;
+    --danger-color: #ff4d4f;
+    --text-secondary: #666;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    height: 100vh;
+    overflow: hidden;
+}
+
+.container {
+    display: flex;
+    height: 100%;
+}
+
+/* Sidebar Styles */
+.sidebar {
+    width: 250px;
+    background-color: var(--sidebar-bg);
+    color: var(--sidebar-text);
+    display: flex;
+    flex-direction: column;
+    transition: width 0.3s;
+    flex-shrink: 0;
+}
+
+.logo {
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #002140;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.menu-container {
+    flex: 1;
+    overflow-y: auto;
+    padding-top: 10px;
+}
+
+.menu-item {
+    cursor: pointer;
+}
+
+.menu-title {
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+    font-weight: 500;
+    transition: background 0.3s;
+}
+
+.menu-title:hover {
+    color: var(--sidebar-hover);
+}
+
+.menu-title .icon {
+    margin-right: 10px;
+    width: 20px;
+    text-align: center;
+}
+
+.submenu {
+    background-color: #000c17;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+}
+
+.submenu.open {
+    max-height: 500px; /* Arbitrary large height */
+    transition: max-height 0.5s ease-in;
+}
+
+.submenu-item {
+    padding: 12px 20px 12px 50px;
+    color: rgba(255, 255, 255, 0.65);
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.submenu-item:hover {
+    color: #fff;
+}
+
+.submenu-item.active {
+    background-color: var(--primary-color);
+    color: #fff;
+}
+
+/* Main Content Styles */
+.main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.top-bar {
+    height: 64px;
+    background-color: var(--header-bg);
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 1px 4px rgba(0, 21, 41, 0.08);
+}
+
+.breadcrumb {
+    font-size: 14px;
+    color: #666;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.logout-btn {
+    border: none;
+    background: none;
+    cursor: pointer;
+    color: #666;
+}
+
+.logout-btn:hover {
+    color: var(--primary-color);
+}
+
+.content-area {
+    flex: 1;
+    padding: 24px;
+    overflow-y: auto;
+    position: relative; /* For positioning context if needed */
+}
+
+.welcome-screen {
+    text-align: center;
+    margin-top: 100px;
+}
+
+.welcome-screen h1 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Module Content Styles */
+/* Search Panel */
+.search-panel {
+    background: #fff;
+    padding: 24px;
+    margin-bottom: 20px;
+    border-radius: 4px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    align-items: center;
+}
+
+.search-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.search-item label {
+    font-size: 14px;
+    color: #333;
+}
+
+.search-item input, .search-item select {
+    padding: 6px 12px;
+    border: 1px solid #d9d9d9;
+    border-radius: 4px;
+    outline: none;
+    transition: all 0.3s;
+    width: 200px;
+}
+
+.search-item input:hover, .search-item select:hover {
+    border-color: var(--primary-color);
+}
+
+.search-buttons {
+    margin-left: auto;
+    display: flex;
+    gap: 10px;
+}
+
+/* Content Panel */
+.content-panel {
+    background: #fff;
+    padding: 24px;
+    border-radius: 4px;
+}
+
+/* Updated Toolbar */
+.toolbar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.toolbar-title {
+    font-size: 16px;
+    font-weight: 500;
+    color: #333;
+}
+
+.toolbar-actions {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.btn {
+    padding: 6px 15px;
+    border-radius: 4px;
+    border: 1px solid var(--border-color);
+    background: #fff;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-size: 14px;
+}
+
+.btn:hover {
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: #fff;
+    border-color: var(--primary-color);
+}
+
+.btn-primary:hover {
+    background-color: #40a9ff;
+    border-color: #40a9ff;
+    color: #fff;
+}
+
+.table-container {
+    overflow-x: auto;
+    min-height: 300px; /* Ensure space for dropdowns */
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid var(--border-color);
+    white-space: nowrap;
+}
+
+th {
+    background-color: #fafafa;
+    font-weight: 500;
+}
+
+tr:hover {
+    background-color: #e6f7ff; /* Lighter blue on hover */
+}
+
+/* Action Links */
+.action-link {
+    color: var(--primary-color);
+    margin-right: 15px;
+    text-decoration: none;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.action-link:hover {
+    text-decoration: underline;
+}
+
+.action-link.delete {
+    color: var(--danger-color);
+}
+
+.action-link.delete:hover {
+    color: #ff7875;
+}
+
+/* Table Styles */
+.badge {
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    border: 1px solid;
+    display: inline-block;
+}
+
+.badge-default {
+    background: #fafafa;
+    border-color: #d9d9d9;
+    color: rgba(0, 0, 0, 0.65);
+}
+
+.badge-success {
+    background: #f6ffed;
+    border-color: #b7eb8f;
+    color: #52c41a;
+}
+
+.badge-primary {
+    background: #e6f7ff;
+    border-color: #91d5ff;
+    color: #1890ff;
+}
+
+/* Checkbox styling */
+.table-checkbox {
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+}
+
+/* ================== New UI Components ================== */
+
+/* Modal Styles */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.45);
+    z-index: 1000;
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-overlay.show {
+    display: flex;
+}
+
+.modal {
+    background: #fff;
+    width: 520px;
+    border-radius: 4px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    display: flex;
+    flex-direction: column;
+}
+
+.modal-header {
+    padding: 16px 24px;
+    border-bottom: 1px solid #f0f0f0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 16px;
+    font-weight: 500;
+    color: #000000d9;
+}
+
+.modal-close {
+    cursor: pointer;
+    border: none;
+    background: none;
+    font-size: 16px;
+    color: rgba(0, 0, 0, 0.45);
+}
+
+.modal-close:hover {
+    color: rgba(0, 0, 0, 0.75);
+}
+
+.modal-body {
+    padding: 24px;
+}
+
+.modal-footer {
+    padding: 10px 16px;
+    text-align: right;
+    border-top: 1px solid #f0f0f0;
+}
+
+.form-item {
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+}
+
+.form-label {
+    width: 80px;
+    text-align: right;
+    margin-right: 12px;
+    color: #000000d9;
+}
+
+.form-value {
+    flex: 1;
+}
+
+.form-input-readonly {
+    background-color: #f5f5f5;
+    border: 1px solid #d9d9d9;
+    padding: 4px 11px;
+    width: 100%;
+    border-radius: 4px;
+    color: rgba(0, 0, 0, 0.65);
+    cursor: not-allowed;
+}
+
+.role-tag-input {
+    border: 1px solid #d9d9d9;
+    padding: 4px 11px;
+    border-radius: 4px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 4px;
+}
+
+.role-tag {
+    background: #f5f5f5;
+    border: 1px solid #e8e8e8;
+    border-radius: 2px;
+    font-size: 12px;
+    padding: 0 7px;
+    display: inline-flex;
+    align-items: center;
+    color: rgba(0, 0, 0, 0.65);
+}
+
+.role-tag-close {
+    margin-left: 4px;
+    cursor: pointer;
+    font-size: 10px;
+}
+
+/* Popconfirm Styles */
+.popconfirm {
+    position: absolute;
+    background: #fff;
+    border-radius: 2px;
+    box-shadow: 0 3px 6px -4px rgba(0, 0, 0, 0.12), 0 6px 16px 0 rgba(0, 0, 0, 0.08), 0 9px 28px 8px rgba(0, 0, 0, 0.05);
+    z-index: 1050;
+    padding: 12px 16px;
+    min-width: 200px;
+    display: none;
+}
+
+.popconfirm.show {
+    display: block;
+}
+
+.popconfirm-content {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 12px;
+    color: #000000d9;
+}
+
+.popconfirm-icon {
+    color: #faad14;
+    font-size: 14px;
+    margin-top: 4px;
+}
+
+.popconfirm-title {
+    font-size: 14px;
+}
+
+.popconfirm-buttons {
+    text-align: right;
+}
+
+.popconfirm-buttons .btn {
+    padding: 2px 8px;
+    font-size: 12px;
+    margin-left: 8px;
+}
+
+.btn-xs {
+    padding: 2px 8px;
+    font-size: 12px;
+}
+
+/* Dropdown Menu Styles */
+.dropdown-menu {
+    position: absolute;
+    background: #fff;
+    border-radius: 2px;
+    box-shadow: 0 3px 6px -4px rgba(0, 0, 0, 0.12), 0 6px 16px 0 rgba(0, 0, 0, 0.08), 0 9px 28px 8px rgba(0, 0, 0, 0.05);
+    z-index: 1050;
+    padding: 4px 0;
+    min-width: 120px;
+    display: none;
+}
+
+.dropdown-menu.show {
+    display: block;
+}
+
+.dropdown-item {
+    padding: 5px 12px;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-size: 14px;
+    color: rgba(0, 0, 0, 0.65);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.dropdown-item:hover {
+    background-color: #f5f5f5;
+    color: var(--primary-color);
+}

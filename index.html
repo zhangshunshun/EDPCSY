@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EDPCS 工程图纸对比系统</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="logo">
+                <h2>EDPCS系统</h2>
+            </div>
+            <nav class="menu-container" id="menu-container">
+                <!-- Menu items will be injected here by JS -->
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="top-bar">
+                <div class="breadcrumb" id="breadcrumb">首页</div>
+                <div class="user-info">
+                    <span>欢迎, Admin</span>
+                    <button class="logout-btn">退出</button>
+                </div>
+            </header>
+
+            <div class="content-area" id="content-area">
+                <div class="welcome-screen">
+                    <h1>欢迎使用 EDPCS 工程图纸对比系统</h1>
+                    <p>请从左侧菜单选择功能模块进行操作。</p>
+                </div>
+                
+                <!-- Dynamic Content Template -->
+                <div id="module-content" style="display: none;">
+                    <div class="toolbar" id="toolbar">
+                        <!-- Buttons will be injected here -->
+                    </div>
+                    <div class="table-container">
+                        <table id="data-table">
+                            <thead id="table-head">
+                                <!-- Table headers -->
+                            </thead>
+                            <tbody id="table-body">
+                                <!-- Table data -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="data.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
